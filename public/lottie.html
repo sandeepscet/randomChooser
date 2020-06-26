@@ -1,0 +1,47 @@
+<html>
+
+<head>
+  <title>RandomChooser</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.6.10/lottie.min.js" integrity="sha256-/56Y/jYu6730zlN8iulnNWn2IcVa4wK/ogwk7n9p2JY=" crossorigin="anonymous"></script>
+
+</head>
+
+<body>  
+  <div id="lottie" style="display: none"></div>
+  <button id="generate"> Generate  </button>
+  <button id="stop"> Stop  </button>
+  
+<script>
+  
+  var animation = bodymovin.loadAnimation({
+  container: document.getElementById('lottie'), 
+  path: getRandomData(), 
+  renderer: 'svg', // Required
+  loop: true, // Optional
+  autoplay: false,
+});
+
+function getRandomData()
+{
+  const dataJsons = ["77-im-thirsty.json", "29-motorcycle.json"];
+  const randomNo = Math.floor(Math.random() * dataJsons.length );
+  console.log(randomNo);
+  return dataJsons[randomNo];
+
+}
+
+$(document).ready(function(){
+  $('#generate').click(function(){
+    $('#lottie').show();
+    animation.play();
+  });
+  $('#stop').click(function(){
+    animation.stop();
+  });
+  
+});
+</script>
+</body>
+
+</html>
