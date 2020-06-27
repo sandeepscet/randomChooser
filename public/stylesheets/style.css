@@ -1,8 +1,17 @@
+html, body {
+  height: 100%;
+}
+
 #success {
   z-index: 1;
 }
 
 .lottie {
+  position:absolute;
+  height: 100%;
+}
+
+.content {
   position: absolute;
 }
 
@@ -18,4 +27,8 @@
 .profile{
   width: 10rem;
   height: 10rem;
+}
+
+.card-title{
+  color:coral
 }

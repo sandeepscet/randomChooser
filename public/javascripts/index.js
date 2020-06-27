@@ -4,6 +4,9 @@ var thirstyLottie = bodymovin.loadAnimation({
     renderer: 'svg',
     loop: true, 
     autoplay: true,
+    rendererSettings: {
+        preserveAspectRatio: 'none'
+    }
   });  
 
   var motorcycleLottie = bodymovin.loadAnimation({
@@ -12,6 +15,9 @@ var thirstyLottie = bodymovin.loadAnimation({
     renderer: 'svg',
     loop: true, 
     autoplay: false,
+    rendererSettings: {
+        preserveAspectRatio: 'none'
+    }
   });  
 
   var successLottie = bodymovin.loadAnimation({
@@ -20,6 +26,9 @@ var thirstyLottie = bodymovin.loadAnimation({
     renderer: 'svg',
     loop: true, 
     autoplay: false,
+    rendererSettings: {
+        preserveAspectRatio: 'none'
+    }
   });  
 
   
@@ -43,8 +52,11 @@ var thirstyLottie = bodymovin.loadAnimation({
                 $('#response').addClass('visible').removeClass('invisible');
                 successLottie.play();
                 $('#successLottie').show();
-                $('#profilePic').attr('src' , response.selected.profilepic ? response.selected.profilepic :'https://cdn0.iconfinder.com/data/icons/streamline-emoji-1/48/222-man-gesturing-NO-1-512.png');
-                $('#ProfileName').text(response.selected.name);                
+                const profilePic =  response.selected.profilepic ? response.selected.profilepic :'https://cdn0.iconfinder.com/data/icons/streamline-emoji-1/48/222-man-gesturing-NO-1-512.png';
+                imageLoad(profilePic , function(){
+                    $('#profilePic').attr('src' , profilePic);
+                    $('#ProfileName').text(response.selected.name);
+                });                                                
             })
             .fail(function(jqXHR, textStatus) {
                 $('#motorcycleLottie').hide();
@@ -54,3 +66,10 @@ var thirstyLottie = bodymovin.loadAnimation({
     });
     
   });
+
+  function imageLoad(url, callback)
+{
+    var img=new Image();
+    img.src=url;
+    img.onload = callback;
+}
