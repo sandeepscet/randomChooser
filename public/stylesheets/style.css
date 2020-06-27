@@ -16,19 +16,21 @@ html, body {
 }
 
 .card {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   max-width: 300px;
   margin: auto;
   text-align: center;
   font-family: arial;
   background-color: transparent;
+  border: 0px;
 }
 
 .profile{
   width: 10rem;
   height: 10rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .card-title{
-  color:coral
+  color:coral;
+  padding-top :1rem
 }
