@@ -48,12 +48,12 @@ var thirstyLottie = bodymovin.loadAnimation({
 
         var jqxhr = $.ajax( "api/getRandomRecord" )
             .done(function(response) {
-                $('#motorcycleLottie').hide();
-                $('#response').addClass('visible').removeClass('invisible');
-                successLottie.play();
-                $('#successLottie').show();
                 const profilePic =  response.selected.profilepic ? response.selected.profilepic :'https://cdn0.iconfinder.com/data/icons/streamline-emoji-1/48/222-man-gesturing-NO-1-512.png';
                 imageLoad(profilePic , function(){
+                    $('#motorcycleLottie').hide();
+                    $('#response').addClass('visible').removeClass('invisible');
+                    successLottie.play();
+                    $('#successLottie').show();                
                     $('#profilePic').attr('src' , profilePic);
                     $('#ProfileName').text(response.selected.name);
                 });                                                
