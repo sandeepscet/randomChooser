@@ -43,6 +43,7 @@ var thirstyLottie = bodymovin.loadAnimation({
         $('#thirstyLottie').hide();
         motorcycleLottie.play();
         $('#motorcycleLottie').show();
+        $('#generate').hide();
         $('#response').addClass('invisible').removeClass('visible');
         $('#successLottie').hide();
 
@@ -56,6 +57,7 @@ var thirstyLottie = bodymovin.loadAnimation({
                     $('#successLottie').show();                
                     $('#profilePic').attr('src' , profilePic);
                     $('#ProfileName').text(response.selected.name);
+                    $('#generate').show();
                 });                                                
             })
             .fail(function(jqXHR, textStatus) {
