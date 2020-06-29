@@ -44,7 +44,7 @@ router.get('/getRandomRecord', function (req, res, next) {
       //response = {all , joined , profilepic , questions };
       setTimeout(function() {
         res.status(200).send({'selected' : members[randomSelected]});
-    }, 3000);
+    }, 2000);
       
     }
   });
