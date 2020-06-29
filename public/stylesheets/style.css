@@ -6,15 +6,6 @@ html, body {
   z-index: 1;
 }
 
-.lottie {
-  position:absolute;
-  height: 100%;
-}
-
-.content {
-  position: absolute;
-}
-
 .card {
   max-width: 300px;
   margin: auto;
@@ -33,4 +24,14 @@ html, body {
 .card-title{
   color:coral;
   padding-top :1rem
+}
+
+.btn-block {
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.btn-block .btn {
+  color: #463168;
 }
