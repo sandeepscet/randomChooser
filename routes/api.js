@@ -51,7 +51,10 @@ router.get('/getRandomRecord', function (req, res, next) {
       const randomSelected = finalArr[Math.floor(Math.random() * finalArr.length)];
 
       //response = {all , joined , profilepic , questions };
-      res.status(200).send({'selected' : members[randomSelected]});      
+      setTimeout(function() {
+        res.status(200).send({'selected' : members[randomSelected]});
+    }, 1000);
+      
     }
   });
 
