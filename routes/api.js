@@ -29,23 +29,29 @@ router.get('/getRandomRecord', function (req, res, next) {
     else{
       let members = {};
       let joinedSession = [];
+      let correctAnswerers = [];
       for(let index = 0;index < all.length ;index++)
       {
-        members[all[index]] = {'name' : all[index] , 'joined': joined[index] , 'profilepic':profilepic[index] , 'questions':questions[index]};
+        members[all[index]] = {'name' : all[index] , 'joined': joined[index] , 'profilepic':profilepic[index] , 'questions': (questions[index] ? questions[index].split(",") : [])};
         if(joined[index]){
           joinedSession.push(all[index]);
-        }
+        }        
       }
 
-      const correctAnswerers = all;
+      for(let joinedIndex = 0;joinedIndex < joinedSession.length ;joinedIndex++)
+      {
+        if(members[joinedSession[joinedIndex]]['questions'].includes(req.query.questionNo))
+        {
+          correctAnswerers.push(joinedSession[joinedIndex]);
+        }        
+      }
+
+      correctAnswerers = correctAnswerers.length == 0 ? all : correctAnswerers;
       const finalArr = correctAnswerers.filter(value => joinedSession.includes(value));
       const randomSelected = finalArr[Math.floor(Math.random() * finalArr.length)];
 
       //response = {all , joined , profilepic , questions };
-      setTimeout(function() {
-        res.status(200).send({'selected' : members[randomSelected]});
-    }, 2000);
-      
+      res.status(200).send({'selected' : members[randomSelected]});      
     }
   });
 
